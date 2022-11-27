@@ -1,7 +1,9 @@
 <?PHP
-use App\Gd\Module\Instaladora\Snippet\Index\Index;
-use App\Gd\Module\Instaladora\Snippet\Index\Catalog;
+use App\Distribuidor\Module\Gd\Snippet\General\Index;
+use App\Distribuidor\Module\Gd\Snippet\General\Catalog;
 use Core\Core;
+use App\Distribuidor\Module\Gd\Snippet\Index\Index as indexPrincipal;
+$objItemIndex = new indexPrincipal();
 
 $objItem = new Index();
 $objCatalog = new Catalog();
@@ -20,7 +22,7 @@ switch($action) {
 
         $smarty->assign("type",$type);
         if($type=="update"){
-            $item = $objItem->getItem($id);
+            $item = $objItemIndex->getItem($id);
             if(trim($item["location_latitude_decimal"]=="") or  trim($item["location_longitude_decimal"]=="")  ){
                 $item["location_latitude_decimal"] = -16.513279;
                 $item["location_longitude_decimal"] = -68.1666655;

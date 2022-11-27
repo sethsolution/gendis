@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Gd\Module\Geovisor\Snippet\Index;
+namespace App\Distribuidor\Module\Gd\Snippet\General;
 use Core\CoreResources;
 
 class Index extends CoreResources {
@@ -77,7 +77,7 @@ class Index extends CoreResources {
         $sql = "select   
                 m.id
                 ,m.c_ut
-                ,m.departamento
+                ,m.departamen as departamento
                 ,m.provincia
                 ,m.name
                 ,m.capital

@@ -1,7 +1,9 @@
 <?PHP
-use App\Gd\Module\Instaladora\Snippet\Index\Index;
-use App\Gd\Module\Instaladora\Snippet\Index\Catalog;
+use App\Distribuidor\Module\Gd\Snippet\Gdfacturacion\Index;
+use App\Distribuidor\Module\Gd\Snippet\Gdfacturacion\Catalog;
 use Core\Core;
+use App\Distribuidor\Module\Gd\Snippet\Index\Index as indexPrincipal;
+$objItemIndex = new indexPrincipal();
 
 $objItem = new Index();
 $objCatalog = new Catalog();
@@ -59,7 +61,7 @@ switch($action) {
         /**
          * llamamos al padre
          */
-        $item_padre = $objItem->getItem($id);
+        $item_padre = $objItemIndex->getItem($id);
         $smarty->assign("item_padre",$item_padre);
 
         $smarty->assign("item",$item);

@@ -1,8 +1,7 @@
 <?PHP
-use App\Plantagd\Module\Gd\Snippet\Index\Index;
-use App\Plantagd\Module\Gd\Snippet\Index\Catalog;
+use App\Distribuidor\Module\Gd\Snippet\Index\Index;
+use App\Distribuidor\Module\Gd\Snippet\Index\Catalog;
 use Core\Core;
-
 
 $objItem = new Index();
 $objCatalog = new Catalog();
@@ -45,12 +44,10 @@ switch($action) {
      * Creación de JSON
      */
     case 'list':
-
         //$datatable_debug = true;
         $res = $objItem->getItemDatatableRows();
         Core::printJson($res);
         break;
-
     case 'itemUpdate':
         /**
          * Smarty Options

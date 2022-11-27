@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Gd\Module\Instaladora\Snippet\Index;
+namespace App\Distribuidor\Module\Gd\Snippet\Index;
 use Core\CoreResources;
 
 class Catalog extends CoreResources{

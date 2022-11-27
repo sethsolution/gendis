@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Gd\Module\Geovisor\Snippet\Index;
+namespace App\Distribuidor\Module\Gd\Snippet\Gdfacturacion;
 use Core\CoreResources;
 
 class Index extends CoreResources {
