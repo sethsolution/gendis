@@ -49,7 +49,6 @@ if($appOk==1){
      * Cargamos las librerias de la app
      */
     include_once(APP_PATH."inc/template.php");
-    //include_once(APP_PATH."inc/inc.php");
     /**
      * Variables base de Smarty
      * --------------------------------------------------------------------------------------------------------------
