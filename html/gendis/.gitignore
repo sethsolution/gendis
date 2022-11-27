@@ -1,0 +1,9 @@
+composer.lock
+vendor/*
+webapp/.idea
+webapp/.well-known
+webapp/.vscode
+.idea
+.vscode
+.env
+!.gitignore
