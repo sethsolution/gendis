@@ -1,6 +1,6 @@
 <?PHP
-use App\Plantagd\Module\Gd\Snippet\Index\Index;
-use App\Plantagd\Module\Gd\Snippet\Index\Catalog;
+use App\Distribuidor\Module\Informe\Snippet\Index\Index;
+use App\Distribuidor\Module\Informe\Snippet\Index\Catalog;
 use Core\Core;
 
 
