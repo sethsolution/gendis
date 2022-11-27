@@ -14,7 +14,7 @@ switch($action) {
     default:
         if($_SESSION['auth']){
             
-            $_SESSION["exit"] = "/login";
+            $_SESSION["exit"] = "/gd";
             switch ($_SESSION["userv"]["type"]){
                 case 3:
                     /**
@@ -22,7 +22,7 @@ switch($action) {
                      * si no tuviera algun acceso se actualizará
                      */
 
-                    $url = 'Location: /public';
+                    $url = 'Location: /distribuidor';
                     break;
                 default:
                     $url = 'Location: /plantagd';

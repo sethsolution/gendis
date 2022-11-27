@@ -14,11 +14,19 @@ switch($action) {
          *
          * Forzamos a que el login se realice desde el modulo de logín
          */
-        if(!$_SESSION['auth']){
+        if(!$_SESSION[auth]){
             $_SESSION["exit"] = "/gd";
             $url = 'Location: /gd';
             header($url);
             exit;
+        }else{
+            switch ($_SESSION["userv"]["type"]){
+                case 3:
+                    $url = 'Location: /distribuidor';
+                    header($url);
+                    break;
+            }
+
         }
         /**
          * usamos el template para mootools
