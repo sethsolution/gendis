@@ -96,6 +96,7 @@
                     },
                     {
                         targets: 4,
+                        orderData: [ 0, 4 ],
                         width: '60px',
                         render: function(data, type, full, meta) {
                             var status = {
@@ -112,6 +113,7 @@
 
                     {
                         targets: [5],
+                        orderData: [0,7],
                         width: '60px',
                         render: function(data, type, full, meta) {
                             var status = {
@@ -129,7 +131,7 @@
                         searchable: false,
                     },
                     {
-                        targets: [-2,-3,-4,3],
+                        targets: [-2,-3,-4,-5,-6],
                         className: "none"
                     },
                     {
@@ -163,7 +165,7 @@
          */
         var  item_delete = function(id){
             var url = urlsys+"/"+id+"/delete";
-            coreUyuni.itemDelete(id,url,table_list);
+            coreUyuni.itemDelete(id,url);
         };
         /**
          * Inicializar componentes
