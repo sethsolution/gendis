@@ -11,24 +11,40 @@
                 <ul class="menu-nav">
                     <li class="menu-item menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here menu-item-active" data-menu-toggle="click" aria-haspopup="true">
                         <a href="javascript:;" class="menu-link menu-toggle">
-                            <span class="menu-text">MNHN</span>
+                            <span class="menu-text">AETN</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="menu-submenu menu-submenu-classic menu-submenu-left">
                             <ul class="menu-subnav">
                                 <li class="menu-item" aria-haspopup="true">
-                                    <a href="http://mnhn.gob.bo/" target="_blank" class="menu-link">
+                                    <a href="https://www.aetn.gob.bo" target="_blank" class="menu-link">
                                         <i class="fab fa-react mr-2"></i>
-                                        <span class="menu-text">Web MNHN </span>
+                                        <span class="menu-text">Web AETN </span>
                                         <!--<span class="menu-label"><span class="label label-success label-rounded">2</span></span>-->
                                     </a>
                                 </li>
                                 <li class="menu-item" aria-haspopup="true">
-                                    <a href="https://www.facebook.com/museonacional.historianatural" target="_blank" class="menu-link">
-                                        <i class="fab fab fa-facebook mr-2"></i>
-                                        <span class="menu-text">Facebook MNHN</span>
+                                    <a href="https://www.aetn.gob.bo/web/main?mid=1&cid=218" target="_blank" class="menu-link">
+                                        <i class="fab fa-react mr-2"></i>
+                                        <span class="menu-text">Procedimientos Generación Distribuida </span>
+                                        <!--<span class="menu-label"><span class="label label-success label-rounded">2</span></span>-->
                                     </a>
                                 </li>
+
+
+                                <li class="menu-item" aria-haspopup="true">
+                                    <a href="https://www.facebook.com/aetn.gob.bo" target="_blank" class="menu-link">
+                                        <i class="fab fab fa-facebook mr-2"></i>
+                                        <span class="menu-text">Facebook AETN </span>
+                                    </a>
+                                </li>
+                                <li class="menu-item" aria-haspopup="true">
+                                    <a href="https://www.aetn.gob.bo/web/main?mid=1&cid=216" target="_blank" class="menu-link">
+                                        <i class="fas fa-info mr-2"></i>
+                                        <span class="menu-text">Generación Distribuida</span>
+                                    </a>
+                                </li>
+
                             </ul>
                         </div>
                     </li>
@@ -591,10 +607,10 @@
                     <div class="row row-paddingless">
                         <!--begin:Item-->
                         <div class="col-6">
-                            <a href="http://www.mnhn.gob.bo" target="_blank" class="d-block py-10 px-5 text-center bg-hover-light border-right border-bottom">
+                            <a href="/plantagd" class="d-block py-10 px-5 text-center bg-hover-light border-right border-bottom">
                                 <span class=""><i class="flaticon2-start-up text-success icon-xl-2x"></i></span>
-                                <span class="d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1">MNHN</span>
-                                <span class="d-block text-dark-50 font-size-lg">Web</span>
+                                <span class="d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1">GD</span>
+                                <span class="d-block text-dark-50 font-size-lg">Plantas GD</span>
                             </a>
                         </div>
                         <!--end:Item-->
@@ -609,19 +625,19 @@
                         <!--end:Item-->
                         <!--begin:Item-->
                         <div class="col-6">
-                            <a href="https://www.facebook.com/museonacional.historianatural" target="_blank" class="d-block py-10 px-5 text-center bg-hover-light border-right">
+                            <a href="https://www.aetn.gob.bo/web/main?mid=1&cid=216" target="_blank" class="d-block py-10 px-5 text-center bg-hover-light border-right">
                                 <span class=""><i class="fas fa-book text-success icon-xl-2x"></i></span>
-                                <span class="d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1">Facebook</span>
-                                <span class="d-block text-dark-50 font-size-lg">MNHN</span>
+                                <span class="d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1">Documentos</span>
+                                <span class="d-block text-dark-50 font-size-lg">Generación Distribuida</span>
                             </a>
                         </div>
                         <!--end:Item-->
                         <!--begin:Item-->
                         <div class="col-6">
-                            <a href="http://www.mmaya.gob.bo" target="_blank" class="d-block py-10 px-5 text-center bg-hover-light">
+                            <a href="http://www.aetn.gob.bo" target="_blank" class="d-block py-10 px-5 text-center bg-hover-light">
                                 <span class=""><i class="fab fa-battle-net text-success icon-xl-2x"></i></span>
                                 <span class="d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1">WEB</span>
-                                <span class="d-block text-dark-50 font-size-lg">MMAyA</span>
+                                <span class="d-block text-dark-50 font-size-lg">ATN</span>
                             </a>
                         </div>
                         <!--end:Item-->
