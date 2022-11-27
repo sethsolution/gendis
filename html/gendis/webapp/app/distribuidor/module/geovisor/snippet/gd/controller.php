@@ -1,6 +1,6 @@
 <?PHP
-use App\Gd\Module\Instaladora\Snippet\Index\Index;
-use App\Gd\Module\Instaladora\Snippet\Index\Catalog;
+use App\Distribuidor\Module\Geovisor\Snippet\Gd\Index;
+use App\Distribuidor\Module\Geovisor\Snippet\Gd\Catalog;
 use Core\Core;
 
 $objItem = new Index();

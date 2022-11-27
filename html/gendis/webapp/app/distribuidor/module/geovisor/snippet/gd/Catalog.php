@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Gd\Module\Geovisor\Snippet\Reporte;
+namespace App\Distribuidor\Module\Geovisor\Snippet\Gd;
 use Core\CoreResources;
 
 class Catalog extends CoreResources{
