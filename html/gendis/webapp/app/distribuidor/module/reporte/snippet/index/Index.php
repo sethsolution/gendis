@@ -1,5 +1,10 @@
 <?PHP
+namespace App\Distribuidor\Module\Reporte\Snippet\Index;
+use Core\CoreResources;
+
 // Extend the TCPDF class to create custom Header and Footer
+
+/*
 class MYPDF extends TCPDF {
     //Page header
     public function Header() {
@@ -20,8 +25,9 @@ class MYPDF extends TCPDF {
         $this->setPageMark();
     }
 }
+*/
 
-class Index extends Table {
+class Index extends CoreResources {
     var $objTable = "distribuidor_reporte";
     var $objTable2 = "distribuidor_totalmes";
     function __construct()

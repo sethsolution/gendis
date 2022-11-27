@@ -1,7 +1,9 @@
 <?PHP
-use App\Gd\Module\Instaladora\Snippet\Index\Index;
-use App\Gd\Module\Instaladora\Snippet\Index\Catalog;
+use App\Distribuidor\Module\Reporte\Snippet\Gd01\Index;
+use App\Distribuidor\Module\Reporte\Snippet\Gd01\Catalog;
 use Core\Core;
+use App\Distribuidor\Module\Reporte\Snippet\Index\Index as indexPrincipal;
+$objItemIndex = new indexPrincipal();
 
 $objItem = new Index();
 $objCatalog = new Catalog();
@@ -19,7 +21,7 @@ switch($action) {
         \Core\Core::setLenguage("general");
         $smarty->assign("type",$type);
         if($type=="update"){
-            $item = $objItem->getItem($id);
+            $item = $objItemIndex->getItem($id);
 
             if ($item["estado_id"]!=1 and $item["estado_id"]!=3){
                 $privFace["edit"] =$privFace["delete"]=$privFace["add"] =0;

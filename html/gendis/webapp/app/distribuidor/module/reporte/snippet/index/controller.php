@@ -1,8 +1,7 @@
 <?PHP
-use App\Plantagd\Module\Gd\Snippet\Index\Index;
-use App\Plantagd\Module\Gd\Snippet\Index\Catalog;
+use App\Distribuidor\Module\Reporte\Snippet\Index\Index;
+use App\Distribuidor\Module\Reporte\Snippet\Index\Catalog;
 use Core\Core;
-
 
 $objItem = new Index();
 $objCatalog = new Catalog();

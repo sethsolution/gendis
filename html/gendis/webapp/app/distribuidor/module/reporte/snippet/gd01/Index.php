@@ -1,8 +1,10 @@
 <?PHP
-namespace App\Gd\Module\Geovisor\Snippet\Index;
+namespace App\Distribuidor\Module\Reporte\Snippet\Gd01;
 use Core\CoreResources;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class Index extends CoreResources {
+
     var $objTable = "distribuidor_reporte_archivo";
     var $folder = "reporte";
     var $fkey_field = "distribuidor_reporte_id";
@@ -21,11 +23,9 @@ class Index extends CoreResources {
         global $objItem;
         //print_struc($rec);exit;
         $form="index";
-
         /**
          * Implementación de guardado de archivos
          */
-
         if($input_file["tmp_name"]!=""){
             $extension = pathinfo($input_file["name"], PATHINFO_EXTENSION);
             $extension = strtolower($extension);
@@ -36,11 +36,10 @@ class Index extends CoreResources {
                  * ---------------------------------------------------------
                  */
                 $dataFile = $this->getDataFromFile($input_file["tmp_name"],$itemId,$extension);
-                //print_struc($dataFile);exit;
 
                 if($dataFile["res"]==1){
 
-                    if( strtoupper($dataFile["data"]["titulos"]["R"])!="IMPTOTAL" &&  strtoupper($dataFile["data"]["titulos"]["Q"])!="IMP_ENER_NY" && $extension == "xlsx" ){
+                    if( strtoupper($dataFile["data"]["titulos"]["AC"])!="FAC_PLANTA" &&  strtoupper($dataFile["data"]["titulos"]["AB"])!="FECHA_PSR" && $extension == "xlsx" ){
                         $res["res"] = 2;
                         $res["type"] = 9; //Contenido de archivo NO válido
                         $res["msgdb"] = "La estructura del excel subido NO es válido";
@@ -65,12 +64,12 @@ class Index extends CoreResources {
                 $res["msg"] = "Se guardo con exito";
                 $item = $objItem->getItem($itemId);
                 /**
-                 * Verificamos si tiene datos almacenados para GD02
+                 * Verificamos si tiene datos almacenados para GD01
                  */
                 if($item["id"]!=""){
-                    if($item["gd02_archivo_id"]!=""){
+                    if($item["gd01_archivo_id"]!=""){
                         $action = "update";
-                        $itemId = $item["gd02_archivo_id"];
+                        $itemId = $item["gd01_archivo_id"];
                     }else{
                         $action = "new";
                         $itemId = "";
@@ -78,12 +77,14 @@ class Index extends CoreResources {
                     $item_id = $item["id"];
                     $tabla = $this->table[$this->objTable];
                     $itemData  = $this->processData($form,$rec,$action,$item_id);
+
                     /**
                      * Save processed data
                      */
                     $field_id="id";
                     $res = $this->updateItem($itemId,$itemData ,$tabla,$action,$field_id);
                     $res["accion"] = $action;
+
                     /**
                      * Process attachment
                      */
@@ -98,8 +99,8 @@ class Index extends CoreResources {
                         /**
                          * Actualizamos la tabla principal
                          */
-                        $itemData2["gd02_archivo_id"]= $adjunto["id"];
-                        $itemData2["gd02"]= "TRUE";
+                        $itemData2["gd01_archivo_id"]= $adjunto["id"];
+                        $itemData2["gd01"]= "TRUE";
 
                         $field_id="id";
                         $where = " distribuidor_id=".$_SESSION["userv"]["distribuidor_id"];
@@ -282,7 +283,7 @@ class Index extends CoreResources {
     }
 
     function save($rec,$item_id){
-        $table = $this->table["distribuidor_reporte_gd02"];
+        $table = $this->table["distribuidor_reporte_gd01"];
         /**
          * Borramos todos los datos existentes
          */
@@ -315,6 +316,127 @@ class Index extends CoreResources {
         $result["user_create"] = 1;
         $result["user_update"] = 1;
         return $result;
+    }
+
+    function getAccessData($item){
+        $id = $item["id"];
+        $item_id=$item["distribuidor_reporte_id"];
+        //$item = $this->getItem($id,$item_id);
+        if($item["id"]!=""){
+            $dir  = $this->getAttachmentDir($item_id,0,$this->folder);
+            $file = $dir.$id.".".$item["attached_extension"];
+            if(strtolower($item["attached_extension"])=="mdb"){
+
+                //$file="d:\GD01102021.mdb";
+                $file="/var/www/html/datafile/distribuidor/reporte/0/1/reporte/14.mdb";
+
+                //phpinfo();
+                /*
+                $dba = ADONewConnection('access');
+                $file="d:\GD01102021.mdb";
+                //$dsn = "Driver={Microsoft Access Driver (*.mdb)};Dbq=".$file.";Uid=;Pwd=;";
+                $dsn = "Driver={Microsoft Access Driver (*.mdb)};Dbq=".$file."";
+                echo $dsn;
+                $dba->debug = true;
+                $dba->Connect($dsn);
+
+                $rs = $dba->execute (' select * from GD0188 ');
+
+                print "<pre>";
+                print_struc($rs->getrows());
+                print "</pre>";
+                */
+                // Connection to ms access
+
+                $uname = explode(" ",php_uname());
+                $os = $uname[0];
+
+                //echo "------->".$os."<------------";
+                switch ($os){
+                    case 'Windows':
+                        $driver = '{Microsoft Access Driver (*.mdb)}';
+                        break;
+                    case 'Linux':
+                        $driver = 'MDBTools';
+                        break;
+                    default:
+                        exit("Don't know about this OS");
+                }
+
+                $dbname = $file;
+
+
+
+
+
+                /*
+                if (!file_exists($dbname)) {
+                    die("Could not find database file.");
+                }else{
+                    echo "-----> Si ha leido el archivo ";
+
+                }
+                */
+                try {
+                    print_struc($dbname);
+                    $connection = new PDO("odbc:Driver={$driver};DBQ=$dbname;");
+
+                    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                    $query = 'select * from GD01';
+                    $result = $connection->query($query)->fetchAll(PDO::FETCH_ASSOC);
+                    print_struc($result);
+
+                    //$sql = "select * from GD01";
+                    //$result = $dbh->query($sql);
+                    //$row = $result->fetchAll(PDO::FETCH_ASSOC);
+
+                    $query = 'select * from GD01';
+                    $result = $connection->query($query);
+
+                    if($result !== false) {
+                        // Parse the result set
+                        foreach($result as $row) {
+                            //print_r ("<br>");
+                            //print_r ($row);
+                            //print_struc($row);
+                        }
+                    }
+                    $connection = null;
+
+                } catch (PDOException $e) {
+                    echo 'Connection failed: ' . $e->getMessage();
+                    //die();
+                } catch (Exception $e) {
+                    echo "Exception: <br>".$e->getMessage();
+                    //die();
+                }
+
+
+                /*
+                $db = new PDO("odbc:Driver={Microsoft Access Driver (*.mdb)};Dbq=".$file.";Uid=; Pwd=;");
+                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+                if ($db)
+                    echo "<br>PDO connection success\n";
+                else
+                    echo "<br>pdo connection failed\n";
+                try{
+                    $result = $db->query($sql);
+                    $row = $result->fetchAll(PDO::FETCH_ASSOC);
+                    print_r($row);
+                }catch(PDOExepction $e){
+                    echo $e->getMessage();
+                }
+                */
+
+            }
+
+
+            //echo $file;
+
+        }else{
+            echo "no existe el archivo";
+        }
     }
 
 }
