@@ -1,14 +1,15 @@
 <link rel="stylesheet" type="text/css" href="/js/geo/leaflet.1.7.1/leaflet.css"  />
-
 <link rel="stylesheet" type="text/css" href="/js/geo/leaflet.extramarkers/dist/css/leaflet.extra-markers.min.css" />
-
 <link rel="stylesheet" type="text/css" href="/js/geo/leaflet.sidebar-v2/css/leaflet-sidebar.css" />
 <link rel="stylesheet" type="text/css" href="/js/geo/leaflet.fullscreen/Control.FullScreen.css" />
 <!--link rel="stylesheet" type="text/css" href="/js/geo/leaflet.groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.css" /-->
 <link rel="stylesheet" type="text/css" href="/js/geo/leaflet.panel-layers/dist/leaflet-panel-layers.min.css" />
 <link rel="stylesheet" type="text/css" href="/js/geo/leaflet.minimap/dist/Control.MiniMap.min.css" />
-
-
+{*
+<link rel="stylesheet" type="text/css" href="/js/geo/leaflet.wms-legend/leaflet.wmslegend.css" />
+*}
+<link rel="stylesheet" type="text/css" href="/js/geo/leaflet.markercluster/dist/MarkerCluster.css" />
+<link rel="stylesheet" type="text/css" href="/js/geo/leaflet.markercluster/dist/MarkerCluster.Default.css" />
 
 {literal}
     <style>
@@ -42,6 +43,7 @@
             font-weight: bold;
             size: 12px!important;
         }
+
         .leaflet-panel-layers-grouplabel .leaflet-panel-layers-title{
             padding-right: 15px;
         }
@@ -96,5 +98,83 @@
             border-bottom: 2px solid  #7236aa;
             text-transform: uppercase;
         }
+
+        #map div.leaflet-panel-layers {
+            /*
+            background-color: #f2f8fa;
+             */
+            /*color: #fff;*/
+
+        }
+
+        /**
+        Base
+         */
+        .sinb-group  .leaflet-panel-layers-base .leaflet-panel-layers-group{
+            background-color: rgba(230,231,238,.5);
+        }
+        .sinb-group .leaflet-panel-layers-base .leaflet-panel-layers-item .leaflet-panel-layers-title span {
+            padding-left: 5px;
+        }
+        .sinb-group .leaflet-panel-layers-base .leaflet-panel-layers-item .leaflet-panel-layers-title {
+            padding-left: 2px;
+        }
+        .sinb-group .leaflet-panel-layers-base .leaflet-panel-layers-item, .sinb-group .leaflet-panel-layers-base .leaflet-panel-layers-item:hover{
+            background-color: rgba(230,231,238,.5);
+            border: 0px solid #3a838b !important;
+        }
+        .sinb-group .leaflet-panel-layers-base .leaflet-panel-layers-grouplabel .leaflet-panel-layers-title,  .sinb-group .leaflet-panel-layers-base .leaflet-panel-layers-icon{
+            color: #0c5d9b !important;
+        }
+        /**
+        Layers
+         */
+        .sinb-group .leaflet-panel-layers-overlays .leaflet-panel-layers-group {
+            background-color: rgba(62,131,139,.8);
+        }
+        .sinb-group .leaflet-panel-layers-overlays .leaflet-panel-layers-grouplabel .leaflet-panel-layers-title{
+            color: #ffffff !important;
+        }
+        .sinb-group .leaflet-panel-layers-overlays .leaflet-panel-layers-icon{
+            color: #ffffff !important;
+        }
+
+        .sinb-group .leaflet-panel-layers-overlays .leaflet-panel-layers-item {
+            background-color: rgba(244,255,254,.8);
+            border: 1px solid #3a838b !important;
+            /*color: #535563 !important;*/
+        }
+        .sinb-group .leaflet-panel-layers-overlays .leaflet-panel-layers-item:hover {
+            /*
+            background-color: rgba(252,255,235,.8);
+             */
+            background-color: rgba(234,252,255,.8);
+            border: 1px solid #3a838b !important;
+            /*color: #535563 !important;*/
+        }
+        .sinb-group .leaflet-panel-layers-overlays .leaflet-panel-layers-item, .leaflet-panel-layers-title{
+            color: #535563 !important;
+        }
+
+
+        /**
+        Unidad Hidrográfica
+         */
+        .sinb-group .leaflet-panel-layers-overlays .leaflet-panel-layers-group:nth-of-type(3) {
+            background-color: rgba(203,241,255,.7);
+        }
+        .sinb-group .leaflet-panel-layers-overlays .leaflet-panel-layers-group:nth-of-type(3) .leaflet-panel-layers-grouplabel .leaflet-panel-layers-title,
+        .sinb-group .leaflet-panel-layers-overlays .leaflet-panel-layers-group:nth-of-type(3) .leaflet-panel-layers-icon{
+            color: #0c5d9b !important;
+        }
+        .sinb-group .leaflet-panel-layers-overlays .leaflet-panel-layers-group:nth-of-type(3) .leaflet-panel-layers-item,
+        .sinb-group .leaflet-panel-layers-overlays .leaflet-panel-layers-group:nth-of-type(3) .leaflet-panel-layers-item:hover {
+            background-color: rgba(255,255,255,.5);
+            border: 1px solid #4e8ea6 !important;
+        }
+
+
+
+
     </style>
 {/literal}
