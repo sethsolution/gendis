@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Sib\Module\User\Snippet\Index;
+namespace App\Plantagd\User\Index;
 use Core\CoreResources;
 class Catalog extends CoreResources{
     function __construct(){

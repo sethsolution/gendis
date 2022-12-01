@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Sib\Module\User\Snippet\Permits;
+namespace App\Plantagd\User\Permits;
 use Core\CoreResources;
 class Index extends CoreResources
 {

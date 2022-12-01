@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Sib\Module\User\Snippet\General;
+namespace App\Plantagd\User\General;
 use Core\CoreResources;
 class Catalog extends CoreResources{
 

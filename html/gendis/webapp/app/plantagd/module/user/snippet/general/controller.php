@@ -1,8 +1,8 @@
 <?PHP
-use App\Sib\Module\User\Snippet\General\Index;
-use App\Sib\Module\User\Snippet\General\Catalog;
+use App\Plantagd\User\General\Index;
+use App\Plantagd\User\General\Catalog;
 use Core\Core;
-use App\Sib\Module\User\Snippet\Index\Index as indexParent;
+use App\Plantagd\User\Index\Index as indexParent;
 
 $objItem = new Index();
 $objCatalog = new Catalog();

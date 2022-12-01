@@ -1,8 +1,8 @@
 <?PHP
-use App\Sib\Module\User\Snippet\Permits\Index;
-use App\Sib\Module\User\Snippet\Permits\Catalog;
+use App\Plantagd\User\Permits\Index;
+use App\Plantagd\User\Permits\Catalog;
 use Core\Core;
-use App\Sib\Module\User\Snippet\Index\Index as indexParent;
+use App\Plantagd\User\Index\Index as indexParent;
 
 $objItem = new Index();
 $objCatalog = new Catalog();
