@@ -12,6 +12,13 @@ $grid_table_join = array();
  */
 
 $grid_table[] = array(
+    "table" => $appVars["table"]["distribuidor"] // Nombre de la tabla con la que hara la relación
+,    "alias"=> "d" //Alias de la tabla para el join
+,   "field_id"=>"id" //Id de la tabla que hara la relación
+,   "relationship_id"=>"distribuidor_id" //Campo de relación en la tabla principal
+);
+
+$grid_table[] = array(
     "table" => $appVars["table"]["distribuidor_reporte_estado"] // Nombre de la tabla con la que hara la relación
 ,    "alias"=> "t" //Alias de la tabla para el join
 ,   "field_id"=>"id" //Id de la tabla que hara la relación
@@ -20,13 +27,18 @@ $grid_table[] = array(
 
 $grid_item[]=array("field" => "anio","label"=> $smarty->config_vars["table_anio"]);
 $grid_item[]=array("field" => "mes","label"=> $smarty->config_vars["table_mes"]);
+
+$grid_item[]=array( "field" => "nombre", "label"=> $smarty->config_vars["table_distribuidor"]
+, "table_as"=> "d", "as" => "distribuidor");
 //$grid_item[]=array("field" => "observaciones","label"=> $smarty->config_vars["table_obs"]);
 $grid_item[]=array("field" => "gd01","label"=> $smarty->config_vars["table_gd01"]);
 $grid_item[]=array("field" => "gd02","label"=> $smarty->config_vars["table_gd02"]);
 $grid_item[]=array("field" => "fecha_envio","label"=> $smarty->config_vars["table_fecha_envio"]);
 $grid_item[]=array("field" => "fecha_aprobacion","label"=> $smarty->config_vars["table_fecha_apro"]);
+
 $grid_item[]=array( "field" => "nombre", "label"=> $smarty->config_vars["table_estado"]
 , "table_as"=> "t", "as" => "distribuidor_reporte_estado");
+
 $grid_item[]=array("field" => "fecha_observacion","label"=> $smarty->config_vars["table_fecha_obs"]);
 
 

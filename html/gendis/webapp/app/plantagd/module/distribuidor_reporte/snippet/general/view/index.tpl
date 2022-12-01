@@ -57,7 +57,7 @@
                 <div class="col-lg-4">
                     <label>{#field_year#} <span class="text-danger bold">*</span>:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control number_integer"
+                        <input type="text" class="form-control number_integer2"
                                name="item[anio]" value="{$item.anio|escape:"html"}"
                                required {$privFace.input}
                                placeholder=""

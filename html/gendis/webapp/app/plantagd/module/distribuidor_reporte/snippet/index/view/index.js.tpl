@@ -115,7 +115,7 @@
                         },
                     },
                     {
-                        targets: [2,3],
+                        targets: [3,4],
                         width: '60px',
                         className: 'text-center',
                         render: function(data, type, full, meta) {
@@ -130,7 +130,7 @@
                         },
                     },
                     {
-                        targets: 6,
+                        targets: 7,
                         width: "80px",
                         render: function(data, type, full, meta) {
                             var status = {
@@ -150,11 +150,11 @@
                         searchable: false,
                     },
                     {
-                        targets: [-2,-3, 7],
+                        targets: [-2,-3, 8],
                         className: "none"
                     },
                     {
-                        targets: [4],
+                        targets: [5],
                         render: function(data,type,full,meta){
                             if (data == null){ data = "";}
                             return '<span class="text-primary font-size-xl">' + data+ '</span>';
@@ -168,7 +168,7 @@
                         },
                     },
                     {
-                        targets: [5, 7],
+                        targets: [6, 8],
                         render: function(data,type,full,meta){
                             if (data == null){ data = "";}
                             return '<span class="text-info font-size-xl">' + data+ '</span>';
