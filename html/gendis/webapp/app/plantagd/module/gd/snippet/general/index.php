@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Plantagd\Module\Gd\Snippet\General;
+namespace App\Plantagd\Gd\General;
 use Core\CoreResources;
 
 class Index extends CoreResources {
