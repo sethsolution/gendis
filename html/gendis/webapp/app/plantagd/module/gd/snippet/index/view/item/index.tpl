@@ -37,6 +37,8 @@
                 </div>
             </div>
         </div>
+
+        {if $type =="new"}
         <div class="flex-md-row-auto w-md-275px w-xl-325px ml-md-6 ml-lg-8">
 
             <div class="card card-custom bgi-no-repeat gutter-b " style="height: 140px; background-color: #663259;
@@ -53,11 +55,11 @@
                 </div>
                 <!--end::Body-->
             </div>
-            {if $type !="new"}{/if}
-
         </div>
-    </div>
+        {/if}
 
+
+    </div>
 {else}
     {include file=$frontend.error_01}
 {/if}
