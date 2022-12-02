@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Plantagd\Module\Catalog\Snippet\Index;
+namespace App\Plantagd\Catalog\Index;
 use Core\CoreResources;
 
 class Catalog extends CoreResources{

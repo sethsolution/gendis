@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Plantagd\Module\Catalog\Snippet\Tipoarchivo;
+namespace App\Plantagd\Catalog\Tipoarchivo;
 use Core\CoreResources;
 
 class Catalog extends CoreResources{

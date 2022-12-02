@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Plantagd\Module\Catalog\Snippet\Fuentegeneracion;
+namespace App\Plantagd\Catalog\Fuentegeneracion;
 use Core\CoreResources;
 
 class Index extends CoreResources {
