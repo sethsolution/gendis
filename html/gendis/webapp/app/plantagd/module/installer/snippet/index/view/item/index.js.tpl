@@ -13,13 +13,12 @@
     }();
 
     jQuery(document).ready(function() {
+        $('#btn_back').removeClass('d-none');
         snippet_tab_item.init();
         $('#{/literal}{$menu_tab_active}{literal}_tab').trigger('click');
     });
 </script>
 {/literal}
-
-
 <script src="https://maps.googleapis.com/maps/api/js?key={$google_map_key}"></script>
 <script src="/js/geo/leaflet.1.7.1/leaflet.js"></script>
 <script src="/js/geo/leaflet.fullscreen/Control.FullScreen.js"></script>

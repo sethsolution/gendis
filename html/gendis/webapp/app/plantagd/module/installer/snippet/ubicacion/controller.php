@@ -2,7 +2,7 @@
 use App\Plantagd\Installer\Ubicacion\Index;
 use App\Plantagd\Installer\Ubicacion\Catalog;
 use Core\Core;
-use App\Plantagd\Module\Installer\Snippet\Index\Index as indexParent;
+use App\Plantagd\Installer\Index\Index as indexParent;
 $objItem = new Index();
 $objCatalog = new Catalog();
 $objItemParent = new indexParent();

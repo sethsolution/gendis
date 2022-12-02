@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Plantagd\Module\Installer\Snippet\Index;
+namespace App\Plantagd\Installer\Index;
 use Core\CoreResources;
 
 class Index extends CoreResources {

@@ -1,6 +1,6 @@
 <?PHP
-use App\Plantagd\Module\Installer\Snippet\Pago\Index;
-use App\Plantagd\Module\Installer\Snippet\Pago\Catalog;
+use App\Plantagd\Installer\Pago\Index;
+use App\Plantagd\Installer\Pago\Catalog;
 use Core\Core;
 
 $objItem = new Index();

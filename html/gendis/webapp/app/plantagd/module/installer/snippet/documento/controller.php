@@ -1,8 +1,8 @@
 <?PHP
-use App\Plantagd\Module\Installer\Snippet\Documento\Index;
-use App\Plantagd\Module\Installer\Snippet\Documento\Catalog;
+use App\Plantagd\Installer\Documento\Index;
+use App\Plantagd\Installer\Documento\Catalog;
 use Core\Core;
-use App\Plantagd\Module\Installer\Snippet\Index\Index as indexPrincipal;
+use App\Plantagd\Installer\Index\Index as indexPrincipal;
 $objItemIndex = new indexPrincipal();
 
 $objItem = new Index();

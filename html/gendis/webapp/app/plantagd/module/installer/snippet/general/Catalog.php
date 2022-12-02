@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Plantagd\Module\Installer\Snippet\General;
+namespace App\Plantagd\Installer\General;
 use Core\CoreResources;
 
 class Catalog extends CoreResources{

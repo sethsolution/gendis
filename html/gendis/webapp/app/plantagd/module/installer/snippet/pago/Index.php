@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Plantagd\Module\Installer\Snippet\Pago;
+namespace App\Plantagd\Installer\Pago;
 use Core\CoreResources;
 
 class Index extends CoreResources {
