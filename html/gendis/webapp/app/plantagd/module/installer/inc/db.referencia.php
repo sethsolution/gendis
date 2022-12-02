@@ -28,6 +28,13 @@ $db_table[] = Core::getTableConfig("requisito");
 $appVars["table"]  = Core::getDbTablesFromArray($db_table,$dbSchemaName,$appVars["table"]);
 unset($db_table);
 
+$db_table = array();
+$dbSchemaName = "geo";
+$db_table[] = Core::getTableConfig("departamento");
+$db_table[] = Core::getTableConfig("municipio");
+$appVars["table"]  = Core::getDbTablesFromArray($db_table,$dbSchemaName,$appVars["table"]);
+unset($db_table);
+
 /**
  * Otras base de datos
  */

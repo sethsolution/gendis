@@ -36,6 +36,14 @@ $item_tab[]=array(
 );
 
 //-------------------------------------------------------------
+$item_tab[]=array(
+    "label"=> $smarty->config_vars["tabUbicacion"]
+,   "id_name"=>"ubicacion"
+,   "icon" => "fas fa-map-marker m--font-success"
+,   "new" => 0
+);
+
+//-------------------------------------------------------------
 /**
  * Se añade el arreglo de tabs configurada a $tabs
  */
