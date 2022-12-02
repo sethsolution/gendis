@@ -1,8 +1,8 @@
 <?PHP
-use App\Plantagd\Module\Distributor\Snippet\General\Index;
-use App\Plantagd\Module\Distributor\Snippet\General\Catalog;
+use App\Plantagd\Distributor\General\Index;
+use App\Plantagd\Distributor\General\Catalog;
 use Core\Core;
-use App\Plantagd\Module\Distributor\Snippet\Index\Index as indexPrincipal;
+use App\Plantagd\Distributor\Index\Index as indexPrincipal;
 $objItemIndex = new indexPrincipal();
 
 $objItem = new Index();

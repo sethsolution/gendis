@@ -1,6 +1,6 @@
 <?PHP
-use App\Plantagd\Module\Distributor\Snippet\Index\Index;
-use App\Plantagd\Module\Distributor\Snippet\Index\Catalog;
+use App\Plantagd\Distributor\Index\Index;
+use App\Plantagd\Distributor\Index\Catalog;
 use Core\Core;
 
 $objItem = new Index();

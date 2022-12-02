@@ -1,5 +1,5 @@
 <?PHP
-namespace App\Plantagd\Module\Distributor\Snippet\Totalmonth;
+namespace App\Plantagd\Distributor\Totalmonth;
 use Core\CoreResources;
 
 class Catalog extends CoreResources{

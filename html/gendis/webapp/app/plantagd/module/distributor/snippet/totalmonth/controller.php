@@ -1,6 +1,6 @@
 <?PHP
-use App\Plantagd\Module\Distributor\Snippet\Totalmonth\Index;
-use App\Plantagd\Module\Distributor\Snippet\Totalmonth\Catalog;
+use App\Plantagd\Distributor\Totalmonth\Index;
+use App\Plantagd\Distributor\Totalmonth\Catalog;
 use Core\Core;
 
 $objItem = new Index();

@@ -134,7 +134,7 @@
         /**
          * New and Update
          */
-        var btn_update = $('#btn_update');
+        var btn_update = $('#btn_new');
         var handle_button_update = function(){
             btn_update.click(function(e){
                 e.preventDefault();
@@ -184,6 +184,7 @@
     }();
 
     jQuery(document).ready(function() {
+        $('#btn_new').removeClass('d-none');
         snippet_list.init();
     });
 </script>
