@@ -61,8 +61,6 @@ class Core{
             }
         }
 
-        $ruta[3] = $ruta[3] ?? "";
-
         if( isset($ruta[3]) || $ruta[3] !="" ){
             $ruta_accion =$ruta[3];
             $ruta_id =$ruta[3];
@@ -76,11 +74,11 @@ class Core{
         }
 
         $res =array();
-        $res["app"] = $app??"";
-        $res["module"] = $module??"";
-        $res["core_id"] = $core_id ?? "";
-        $res["route_action"] = $ruta_accion??"";
-        $res["vars"] = $variables?? "";
+        $res["app"] = $app;
+        $res["module"] = $module;
+        $res["core_id"] = $core_id;
+        $res["route_action"] = $ruta_accion;
+        $res["vars"] = $variables;
         return $res;
     }
 
@@ -175,7 +173,7 @@ class Core{
         $menu = array();
         foreach ($appGroup as $row){
 
-            if( isset($_SESSION["userv"]["type"])  && ($_SESSION["userv"]["type"]==0 || $_SESSION["userv"]["type"]==1) )
+            if($_SESSION["userv"]["type"]==0 || $_SESSION["userv"]["type"]==1)
             {
                 $where = [
                     ['app_id', '=', $appData["id"]],
@@ -188,7 +186,7 @@ class Core{
                     ['core.app_module.app_id', '=', $appData["id"]]
                     ,  ['core.app_module.app_group_id', '=', $row->id]
                     ,  ['core.app_module.active', '=', 'TRUE']
-                    ,  ['core.user_module.user_id', '=', ($_SESSION["userv"]["id"]??0)]
+                    ,  ['core.user_module.user_id', '=', $_SESSION["userv"]["id"]]
                 ];
                 $appModule = AppModule::select('core.app_module.id'
                     ,'core.app_module.app_id'
@@ -227,7 +225,7 @@ class Core{
         /**
          * Sacamos los datos de la base de datos
          */
-        if(isset($_SESSION["userv"]["id"]) && $_SESSION["userv"]["id"]>0){
+        if($_SESSION["userv"]["id"]>0){
             $_SESSION["userv"] = Core::getUserInfo($_SESSION["userv"]["id"]);
 
             if(!isset($_SESSION["userv"]["id"]) || $_SESSION["userv"]["id"]==''){
@@ -265,17 +263,17 @@ class Core{
         ];
         $appModule = AppModule::select('core.app_module.id'
             ,'core.app_module.name'
-            /*
-            ,'core.app_module.description'
-            ,'core.app_module.active'
-            ,'core.app_module.order'
-            ,'core.app_module.target'
-            ,'core.app_module.class'
-            ,'core.app_module.type'
-            ,'core.app_module.folder'
-            ,'core.app_module.url'
-            ,'core.user_module.app_module_id as priv'
-            */
+        /*
+        ,'core.app_module.description'
+        ,'core.app_module.active'
+        ,'core.app_module.order'
+        ,'core.app_module.target'
+        ,'core.app_module.class'
+        ,'core.app_module.type'
+        ,'core.app_module.folder'
+        ,'core.app_module.url'
+        ,'core.user_module.app_module_id as priv'
+        */
         )
             ->leftjoin('core.user_module','core.user_module.app_module_id','=','core.app_module.id')
             ->where($where)
@@ -286,7 +284,7 @@ class Core{
 
     function getUserModulePrivileges($id){
         $where = [
-                ['user_id', '=', $_SESSION["userv"]["id"]]
+            ['user_id', '=', $_SESSION["userv"]["id"]]
             ,   ['app_module_id', '=', $id]
         ];
         $userModule = UserModule::where($where)->first();
@@ -338,8 +336,7 @@ class Core{
                 }
             }
         }
-
-        return $res ?? array();
+        return $res;
     }
 
     /**
