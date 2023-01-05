@@ -9,6 +9,8 @@
         var btn_submit = $('#general_submit');
         var formv;
         var urlsys = '{/literal}{$path_url}/{$subcontrol}_/calcular/{literal}';
+        let urlmodule = "{/literal}{$path_url}/{$subcontrol}_{literal}";
+
         /**
          * Antes de enviar el formulario se ejecuta la siguiente funcion
          */
@@ -68,18 +70,9 @@
                 formv.validate().then(function(status) {
                     if(status === 'Valid'){
                         form.submit();
-                        console.log(status)
-                        form.submit(function(e){
-                            $.ajax({
-                                type : 'POST',
-                                data: form.serialize(),
-                                url : 'url',
-                                success : function(data){
-                                    $("#result_modal").modal("show");
-                                }
-                            });
-                            return false;
-                        });
+                        // console.log(status)
+                        // form.submit(function(e){
+                        // });
                     }else{
                         Swal.fire({icon: 'error',title: lngUyuni.formFieldControlTitle, text: lngUyuni.formFieldControlMsg});
                     }
@@ -93,11 +86,159 @@
             coreUyuni.setComponents();
         };
 
+        var form = $("#form");
+        var result = $("#result");
+        var handle_calcular_dimensionamiento = function(){
+            $('#btn_calcular').click('submit',function(event){
+                event.preventDefault();
+                var location_latitude_decimal = $('#location_latitude_decimal').val();
+                var location_longitude_decimal = $('#location_longitude_decimal').val();
+                var consumo_mensual_promedio = $('#consumo_mensual_promedio').val();
+                var acceso_sol = $('input:radio[name=acceso_sol]:checked').val();
+                $(".error").remove();
+                console.log(acceso_sol);
+                if (consumo_mensual_promedio.length < 1 ) {
+                    $('#msgConsumoMensualPromedio').after('<span class="error">Campo requerido</span>');
+                }else if(acceso_sol==0){
+                    $('#msgAccesosol').after('<span class="error">No tiene una superficie con acceso al sol</span>');
+                }else{
+                if(location_latitude_decimal!="" && location_longitude_decimal!="" &&  consumo_mensual_promedio!="") {
+                    $('#btn_calcular').addClass('spinner spinner-white spinner-right').attr('disabled', true);
+                $.post(urlmodule+"/calcular"
+                    , {
+                        location_latitude_decimal: location_latitude_decimal,
+                        location_longitude_decimal: location_longitude_decimal,
+                        consumo_mensual_promedio: consumo_mensual_promedio
+                    }
+                    , function (res, textStatus, jqXHR) {
+                        form.prop('hidden', true);
+                        result.prop('hidden', false);
+                        console.log(res);
+                        let html = "";
+                        result.html(html);
+                            html += `<div class="bg-white rounded p-10">
+											<!--begin::Card-->
+											<div class="card card-custom card-border">
+												<div class="card-header">
+													<div class="card-title">
+														<h2 class="card-label">Resultados Técnicos</h2>
+													</div>
+													<div class="card-toolbar">
+														<a href="dimensionamiento" class="btn btn-light-primary font-weight-bolder mr-2">
+											            <i class="ki ki-long-arrow-back icon-xs"></i>Volver a calcular</a>
+													</div>
+												</div>
+												<div class="card-body" >
+                                                    <div class="d-flex align-items-center flex-wrap">
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-7 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <span class="font-weight-bolder font-size-h7">Número de módulos</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-7 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <img alt="150px" width="150px" src="/app/gd/template/images/panel.png">
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-7 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <span class="font-weight-bolder font-size-h7">${res.numeroModulos}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                 <hr>
+                                                    <div class="d-flex align-items-center flex-wrap">
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-6 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <span class="font-weight-bolder font-size-h7">Número de inversores</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-6 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <img alt="150px" width="150px" src="/app/gd/template/images/inversor.png">
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-6 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <span class="font-weight-bolder font-size-h7">${res.numeroInversores}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                 <hr>
+                                                    <div class="d-flex align-items-center flex-wrap">
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-6 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <span class="font-weight-bolder font-size-h7">Área estimada de instalación</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-6 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <img alt="150px" width="150px" src="/app/gd/template/images/area.png">
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-6 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <span class="font-weight-bolder font-size-h7">${res.areaInstalacion} m2</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                 <hr>
+                                                    <div class="d-flex align-items-center flex-wrap">
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-6 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <span class="font-weight-bolder font-size-h7">Inclinación de los módulos</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-6 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <img alt="150px" width="150px" src="/app/gd/template/images/inclinacion.png">
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-6 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <span class="font-weight-bolder font-size-h7">${res.inclinacionModuloOptimo}°</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                 <hr>
+                                                    <div class="d-flex align-items-center flex-wrap">
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-6 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <span class="font-weight-bolder font-size-h7">Orientación de los módulos</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-6 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <img alt="150px" width="150px" src="/app/gd/template/images/orientacion.png">
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center flex-lg-fill mr-6 my-1">
+                                                            <div class="d-flex flex-column text-dark-75">
+                                                                <span class="font-weight-bolder font-size-h7">${res.orientacionOptima}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+											</div>
+											<!--end::Card-->
+										</div>`;
+                        // });
+                        result.html(html);
+                    }
+                    , 'json');
+            }else{
+
+            }
+                }
+            });
+        };
+
         return {
             init: function() {
-                handle_form_submit();
-                handle_btn_submit();
+                // handle_form_submit();
+                // handle_btn_submit();
                 handle_components();
+                handle_calcular_dimensionamiento();
             }
         };
     }();

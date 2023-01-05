@@ -54,9 +54,10 @@ switch($action){
     case 'calcular':
 //        echo "calcular";exit;
         $respuesta = $objItem->Calculate($_REQUEST);
-//        Core::printJson($respuesta);
-        $smarty->assign('item', $respuesta);
+//        print_struc($respuesta);exit;
+        Core::printJson($respuesta);
+        $smarty->assign("res", $respuesta);
 //        $smarty->assign("res", $res);
-        $smarty->assign("subpage",$webm["sc_resultado"]);
+//        $smarty->assign("subpage",$webm["sc_index"]);
         break;
 }

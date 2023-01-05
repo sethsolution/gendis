@@ -25,19 +25,20 @@
                 </div>
             </div>
             {foreach from=$numeroModulos item=item}
-                <p>{$numeroModulos}</p>
+                <p>{$item.numeroModulos}</p>
             {/foreach}
 
             <p>{$item.numeroModulos}</p>
-            <p>{$item.numeroModulos}</p>
+{*            <p>{$item.numeroModulos}</p>*}
             {foreach from=$numeroModulos item=item}
-                <p> {$numeroModulos}</p>
+                <p> {$location_latitude_decimal}</p>
             {/foreach}
             <p>Soy el modal</p>
             <p>capacidad</p>
-            <p>{$item.numeroModulos}</p>
-            <p>{$numeroModulos}</p>
-            <p>capacidad</p>
+{*            <p>{$item.numeroModulos}</p>*}
+{*            <p>{$numeroModulos}</p>*}
+            <p>{$item.location_latitude_decimal}</p>
+            <p>{$location_latitude_decimal}</p>
 
         </div>
 

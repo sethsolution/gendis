@@ -14,6 +14,9 @@ class Index extends CoreResources
     }
 
     function Calculate($rec){
+//        print_struc($location_latitude_decimal);
+//        print_struc($location_longitude_decimal);
+//        exit;
         /**
          * TAblas que usara
          */
@@ -67,7 +70,7 @@ class Index extends CoreResources
         $item["orientacionOptima"] = $this->calculateOrientacionOptimo($rec["location_latitude_decimal"]);
 //        $res = "Calcular";
 //        print_struc($rec);
-//        print_struc($item);exit;
+//        print_struc($item["orientacionOptima"]);exit;
         return $item;
     }
 

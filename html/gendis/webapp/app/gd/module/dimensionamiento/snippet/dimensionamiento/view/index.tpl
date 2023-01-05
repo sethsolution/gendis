@@ -1,9 +1,7 @@
 {include file="index.css.tpl"}
-<div class="card card-custom gutter-b ">
+<div class="card card-custom gutter-b" id="form" >
     <!--begin::Form-->
-    <form method="POST"
-          action="{$path_url}/{$subcontrol}_/calcular/"
-          id="general_form">
+    <form id="general_form">
 
         <div class="card-header py-3">
             <div class="card-title  m-0">
@@ -52,35 +50,35 @@
                 <div class="col-lg-12">
                     <label>{#field_consumo_mensual_promedio#}  <span class="text-danger bold">*</span> :</label>
                     <div class="input-group">
-                        <input type="text" class="form-control"
+                        <input type="text" class="form-control number_integer2"
                                id="consumo_mensual_promedio"
                                required
                                name="consumo_mensual_promedio"
-                               value=""
+                               value="{$item.consumo_mensual_promedio|escape:"html"}"
                                data-fv-not-empty___message="{#glFieldRequired#}"
                         >
                         <div class="input-group-append"><span class="input-group-text"><i
                                         class="far fa-lightbulb text-info"></i></span></div>
                     </div>
-                    <span class="form-text text-black-50">{#field_msg_consumo_mensual_promedio#}</span>
+                    <span class="form-text text-black-50" id="msgConsumoMensualPromedio">{#field_msg_consumo_mensual_promedio#}</span>
                 </div>
                 <div class="col-lg-12">
                     <div class="cuadro m--padding-10">
                         <div class="input-group"> {#field_acceso_sol#}
                             <div class="m-radio-list">
                                 <br>
-                                <input type="radio" name="acceso_sol" {$privFace.input} value="1" {if $item.acceso_sol == 1} checked{/if}> SI
-                                <input type="radio" name="acceso_sol" {$privFace.input} value="0" {if $item.acceso_sol == 0} checked{/if}> NO
+                                <input type="radio" id="acceso_sol" name="acceso_sol" value="1" {if $acceso_sol == 1} checked{/if}> SI
+                                <input type="radio" id="acceso_sol" name="acceso_sol" value="0" {if $acceso_sol == 0} checked{/if}> NO
                             </div>
                         </div>
-                        <span class="form-text text-black-50">{#field_msg_acceso_sol#}</span>
+                        <span class="form-text text-black-50"  id="msgAccesosol">{#field_msg_acceso_sol#}</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="card-footer">
             {if $privFace.edit == 1}
-                <button type="reset" class="btn btn-primary mr-2" id="general_submit">
+                <button type="reset" class="btn btn-primary mr-2" id="btn_calcular">
                     <i class="fas fa-calculator"></i>
                     Calcular</button>
             {/if}
@@ -89,14 +87,8 @@
     <!--end::Form-->
 </div>
 
-<div class="modal fade" id="result_modal"
-     data-backdrop="static" tabindex="-1" role="dialog"
-     aria-labelledby="staticBackdrop" aria-hidden="true"
->
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content modal-lg" id="modal-content">
-        </div>
-    </div>
+<div class="card card-custom gutter-b" id="result" hidden >
+
 </div>
 
 {include file="index.js.tpl"}
