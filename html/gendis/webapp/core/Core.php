@@ -263,17 +263,17 @@ class Core{
         ];
         $appModule = AppModule::select('core.app_module.id'
             ,'core.app_module.name'
-            /*
-            ,'core.app_module.description'
-            ,'core.app_module.active'
-            ,'core.app_module.order'
-            ,'core.app_module.target'
-            ,'core.app_module.class'
-            ,'core.app_module.type'
-            ,'core.app_module.folder'
-            ,'core.app_module.url'
-            ,'core.user_module.app_module_id as priv'
-            */
+        /*
+        ,'core.app_module.description'
+        ,'core.app_module.active'
+        ,'core.app_module.order'
+        ,'core.app_module.target'
+        ,'core.app_module.class'
+        ,'core.app_module.type'
+        ,'core.app_module.folder'
+        ,'core.app_module.url'
+        ,'core.user_module.app_module_id as priv'
+        */
         )
             ->leftjoin('core.user_module','core.user_module.app_module_id','=','core.app_module.id')
             ->where($where)
@@ -284,7 +284,7 @@ class Core{
 
     function getUserModulePrivileges($id){
         $where = [
-                ['user_id', '=', $_SESSION["userv"]["id"]]
+            ['user_id', '=', $_SESSION["userv"]["id"]]
             ,   ['app_module_id', '=', $id]
         ];
         $userModule = UserModule::where($where)->first();
