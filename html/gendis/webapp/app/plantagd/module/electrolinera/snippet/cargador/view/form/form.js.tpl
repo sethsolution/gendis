@@ -54,7 +54,7 @@
                 /**
                  * Copiamos los datos de summerNote a una variable
                  */
-                $('#remarks_input').val($('#remarks').summernote('code'));
+                $('#description_input').val($('#description').summernote('code'));
                 formv.validate().then(function(status) {
                     if(status === 'Valid'){
                         form.submit();
@@ -67,6 +67,13 @@
          */
         var handle_components = function(){
             coreUyuni.setComponents();
+
+            $('#input_file').on('change', function() {
+                let fileName = $(this).val().split('\\').pop();
+                if(fileName!=""){
+                    $("#input_file_name").addClass("input-attached-file").html(fileName);
+                }
+            });
         };
 
         //== Public Functions

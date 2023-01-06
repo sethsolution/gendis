@@ -1,11 +1,11 @@
 <?PHP
-use App\Gd\Module\Dimensionamiento\Snippet\Dimensionamiento\Index;
-use App\Gd\Module\Dimensionamiento\Snippet\Dimensionamiento\Catalog;
+use App\Plantagd\Electrolinera\General\Index;
+use App\Plantagd\Electrolinera\General\Catalog;
 use Core\Core;
-use App\Gd\Module\Dimensionamiento\Snippet\index\Index as indexParent;
+
 $objItem = new Index();
 $objCatalog = new Catalog();
-$objItemParent = new indexParent();
+
 /**
  * Todo el sub Control se recuperará mediante llamadas por ajax
  */
@@ -19,11 +19,11 @@ switch($action){
         /**
          * Language settings, section
          */
-        \Core\Core::setLenguage("index");
-        $smarty->assign("type",$type);
+        \Core\Core::setLenguage("general");
 
+        $smarty->assign("type",$type);
         if($type=="update"){
-//            $item = $objItemParent->getItem($id);
+            $item = $objItem->getItem($id);
             if(trim($item["location_latitude_decimal"]=="") or  trim($item["location_longitude_decimal"]=="")  ){
                 $item["location_latitude_decimal"] = -16.513279;
                 $item["location_longitude_decimal"] = -68.1666655;
@@ -36,24 +36,21 @@ switch($action){
         /**
          * Catalog
          */
-        $objCatalog->confCatalog();
+
+        $objCatalog->confCatalog($item);
         $cataobj= $objCatalog->getCatalogList();
         //print_struc($cataobj);exit;
         $smarty->assign("cataobj", $cataobj);
-        $smarty->assign("item_id", $item_id);
-        /**
-         * Grid configuration
-         */
-        $gridItem = $objItem->getGridItem("index");
-        $smarty->assign("gridItem", $gridItem);
+
         $smarty->assign("subpage",$webm["sc_index"]);
         break;
-    /**
-     * Creación de JSON
-     */
-    case 'calcular':
-        $respuesta = $objItem->Calculate($_REQUEST);
+
+    case 'save':
+        $respuesta = $objItem->updateData($_REQUEST["item"],$id,$type);
         Core::printJson($respuesta);
-        $smarty->assign("res", $respuesta);
+        break;
+    case 'get.municipio':
+        $item = $objCatalog->getMunicipioOptions($_REQUEST["id"]);
+        Core::printJson($item);
         break;
 }

@@ -5,80 +5,8 @@
         /**
          * Datos del formulario y el boton
          */
-        var form = $('#general_form');
-        var btn_submit = $('#general_submit');
-        var formv;
-        var urlsys = '{/literal}{$path_url}/{$subcontrol}_/calcular/{literal}';
         let urlmodule = "{/literal}{$path_url}/{$subcontrol}_{literal}";
 
-        /**
-         * Antes de enviar el formulario se ejecuta la siguiente funcion
-         */
-
-        var showRequest= function(formData, jqForm, op)  {
-            btn_submit.addClass('spinner spinner-white spinner-right').attr('disabled', true);
-            return true;
-        };
-
-        var showResponse = function (res, statusText) {
-            // btn_submit.removeClass('spinner spinner-white spinner-right').attr('disabled', false);
-            // $("#result_modal").modal("show");
-            let cargando = lngUyuni.loading+'...'+cargando_vista;
-            $("#modal-content").html(cargando);
-            $("#result_modal").modal("show");
-            $.get(urlsys, function(data) {
-                $("#modal-content").html(data);
-            });
-        };
-        /**
-         * Opciones para generar el objeto del formulario
-         */
-        var options = {
-            success:  showResponse
-            , data: {type:'{/literal}{$type}{literal}'}
-        };
-        /**
-         * Se da las propiedades de ajaxform al formulario
-         */
-        var handle_form_submit=function(){
-            // form.ajaxForm(options);
-            formv = FormValidation.formValidation(
-                document.getElementById('general_form'),
-                {
-                    plugins: {
-                        declarative: new FormValidation.plugins.Declarative({html5Input: true,}),
-                        trigger: new FormValidation.plugins.Trigger(),
-                        bootstrap: new FormValidation.plugins.Bootstrap(),
-                        submitButton: new FormValidation.plugins.SubmitButton(),
-                    }
-                }
-            );
-
-        };
-        /**
-         * Se da las funcionalidades al boton enviar
-         */
-        var handle_btn_submit = function() {
-            btn_submit.click(function(e) {
-                e.preventDefault();
-                // $('#result_modal').modal('show');
-                /**
-                 * Copiamos los datos de summerNote a una variable
-                 */
-                //$('#descripcion_input').val($('#descripcion').summernote('code'));
-
-                formv.validate().then(function(status) {
-                    if(status === 'Valid'){
-                        form.submit();
-                        // console.log(status)
-                        // form.submit(function(e){
-                        // });
-                    }else{
-                        Swal.fire({icon: 'error',title: lngUyuni.formFieldControlTitle, text: lngUyuni.formFieldControlMsg});
-                    }
-                });
-            });
-        };
         /**
          * Iniciamos los componentes necesarios como , summernote, select2 entre otros
          */
@@ -235,8 +163,6 @@
 
         return {
             init: function() {
-                // handle_form_submit();
-                // handle_btn_submit();
                 handle_components();
                 handle_calcular_dimensionamiento();
             }
