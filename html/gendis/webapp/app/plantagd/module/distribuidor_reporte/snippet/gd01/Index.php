@@ -1,6 +1,7 @@
 <?PHP
 namespace App\Plantagd\Module\Distribuidorreporte\Snippet\Gd01;
 use Core\CoreResources;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class Index extends CoreResources {
     var $objTable = "distribuidor_reporte_archivo";
@@ -19,12 +20,15 @@ class Index extends CoreResources {
 
     function updateData($rec,$itemId,$action,$input_file){
         global $objItem;
-        //print_struc($rec);exit;
+        //print_struc($input_file);exit;
         $form="index";
 
         /**
          * Implementación de guardado de archivos
          */
+
+        $validacionDatos=$this->validarFile($input_file["name"]);
+        print_struc($validacionDatos);exit();
 
         if($input_file["tmp_name"]!=""){
             $extension = pathinfo($input_file["name"], PATHINFO_EXTENSION);
@@ -60,6 +64,7 @@ class Index extends CoreResources {
                         $item_id_name = $this->fkey_field;
                         $id_name = "id";
                         $adjunto = $this->saveAttachment($itemFile,$tabla,$input_file,$item_id,$res["id"],$action,$this->folder,$item_id_name,$id_name);
+                        //print_struc($adjunto);
                     }
 
                     if($adjunto["res"]==1){
@@ -93,6 +98,19 @@ class Index extends CoreResources {
             //print_struc($extension);
         }
         return $res;
+    }
+
+    function validarFile($file){
+        $resp = "";
+        $archivo = IOFactory::load($file);
+        $hoja = $archivo->getSheet(0);
+        $filas = $hoja->getHighestDataRow();
+        $columna = $hoja->getHighestColumn();
+        for($indice = 1; $indice<=$filas; $indice++){
+            $valor = $hoja->getCellByColumnAndRow('A', $indice);
+            $resp = $resp.$valor."<br/>";
+        }
+        return $resp;
     }
 
     function getItem($id,$item_id){
