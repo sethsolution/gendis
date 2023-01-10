@@ -1028,13 +1028,13 @@ https://leaflet-extras.github.io/leaflet-providers/preview/
             var out = [];
             if (f.properties){
                 let info = "";
-                info += "<h2 class='titulo'>Electrolinera</h2>";
+                info += "<h2 class='titulo'>INSTALADORA</h2>";
                 // info += "<strong>Fecha inicio:</strong> <BR>"+ f.properties["fecha_inicio"]+" ";
                 // info += "<BR><strong>Fecha conclusion:</strong> <BR>"+ f.properties["fecha_conclusion"]+" ";
                 out.push(info);
 
                 out.push("<strong>Nombre:</strong> "+ f.properties["nombre"]);
-                out.push("<strong>Direccion:</strong> "+ f.properties["direccion"]);
+                out.push("<strong>NIT:</strong> "+ f.properties["nit"]);
 
                 ubicacion ="";
                 ubicacion += "<div class='ubicacion_titulo'>Ubicación:</div>";
