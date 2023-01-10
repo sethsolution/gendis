@@ -13,7 +13,7 @@ switch($action) {
          * Tabs
          */
         $smarty->assign("google_map_key", $_ENV["GOOLE_MAP_KEY"]);
-        $smarty->assign("stadiamaps_key", $_ENV["STADIAMAPS_KEY"]);
+        $smarty->assign("stadiamaps_key", $_ENV["STADIAMAPSF_KEY"]);
 
         $menu_tab = $objItem->getTabItem($type,"index");
         $smarty->assign("menu_tab", $menu_tab);
